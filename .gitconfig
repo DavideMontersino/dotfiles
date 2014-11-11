@@ -69,6 +69,13 @@
 		fi \
 	}; f"
 
+	#common aliases
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	la = config --global alias.st status config -l | grep alias | cut -c 7-
+
 [apply]
 
 	# Detect whitespace errors when applying a patch
