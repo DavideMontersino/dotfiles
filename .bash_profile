@@ -46,3 +46,53 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+#Davide Orazio Montersino Add ons
+
+# Copy most recent command in bash history
+alias cbhs="cat $HISTFILE | tail -n 1 | cb"
+# Cron log
+alias cronlog="grep CRON /var/log/syslog"
+#ipython notebook
+alias ipnb="ipython notebook"
+
+#from https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git
+
+SSH_ENV=$HOME/.ssh/environment
+   
+# start the ssh-agent
+function start_agent {
+    echo "Initializing new SSH agent..."
+    # spawn ssh-agent
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add
+}
+   
+if [ -f "${SSH_ENV}" ]; then
+     . "${SSH_ENV}" > /dev/null
+     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
+
+
+function mkcd
+{
+  command mkdir $1 && cd $1
+}
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+function iPadDebugger
+{
+  LD_PRELOAD=/home/davide/ios-proxy/lib/libplist.so /home/davide/ios-proxy/bin/ios_webkit_debug_proxy
+}
+
+function restartx
+{
+  sudo restart lightdm
+}
