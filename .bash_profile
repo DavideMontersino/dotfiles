@@ -47,15 +47,6 @@ complete -W "NSGlobalDomain" defaults;
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
 
-#Davide Orazio Montersino Add ons
-
-# Copy most recent command in bash history
-alias cbhs="cat $HISTFILE | tail -n 1 | cb"
-# Cron log
-alias cronlog="grep CRON /var/log/syslog"
-#ipython notebook
-alias ipnb="ipython notebook"
-
 #from https://confluence.atlassian.com/display/BITBUCKET/Set+up+SSH+for+Git
 
 SSH_ENV=$HOME/.ssh/environment

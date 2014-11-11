@@ -139,3 +139,10 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
+
+# Copy most recent command in bash history
+alias cbhs="cat $HISTFILE | tail -n 1 | cb"
+# Cron log
+alias cronlog="grep CRON /var/log/syslog"
+#ipython notebook
+alias ipnb="ipython notebook"
